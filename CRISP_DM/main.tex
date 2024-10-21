@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\title{Unveiling Titanic Survivors: A Machine Learning Perspective with CRISP-DM}
+\author{ Siri Batchu \\ Department of Software Engineering \\ San Jose State University}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This research paper explores the application of the CRISP-DM (Cross-Industry Standard Process for Data Mining) methodology to predict the survival of passengers aboard the Titanic. Using the Titanic dataset, we aim to develop a predictive model based on various passenger attributes, such as age, gender, class, and fare. This paper follows all stages of the CRISP-DM framework: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, and Deployment.
+\end{abstract}
+
+\section{Introduction}
+The sinking of the Titanic on April 15, 1912, remains one of the most infamous maritime disasters in history. Understanding the factors that contributed to survival can provide insights into social dynamics and emergency response during crises. This study utilizes machine learning techniques to predict survivors based on historical data.
+
+\section{CRISP-DM Methodology}
+
+
+\subsection{Business Understanding}
+The primary objective of this project is to build a predictive model that accurately classifies Titanic passengers as survivors or non-survivors. This can aid historical analyses and provide lessons for modern emergency management.
+
+
+\subsection{Data Understanding}
+The dataset used in this study is the Titanic dataset from Kaggle, which includes 891 passengers with various attributes.
+
+\vspace{20pt}
+\textbf{Key Attributes:}
+\begin{itemize}
+    \item \textbf{Survived}: Survival status (0 = No, 1 = Yes)
+    \item \textbf{Pclass}: Ticket class (1 = 1st, 2 = 2nd, 3 = 3rd)
+    \item \textbf{Sex}: Gender of the passenger
+    \item \textbf{Age}: Age in years
+    \item \textbf{SibSp}: Number of siblings/spouses aboard
+    \item \textbf{Parch}: Number of parents/children aboard
+    \item \textbf{Fare}: Fare paid for the ticket
+    \item \textbf{Embarked}: Port of embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)
+\end{itemize}
+
+\subsection{Data Preparation}
+Data cleaning involves handling missing values and encoding categorical variables. We impute missing ages with the median and encode categorical variables using one-hot encoding.
+
+\begin{verbatim}
+# Data Cleaning
+titanic_data['Age'].fillna(titanic_data['Age'].median(), inplace=True)
+titanic_data = pd.get_dummies(titanic_data, columns=['Sex', 'Embarked'], drop_first=True)
+
+# Drop unnecessary columns
+titanic_data.drop(['Name', 'Ticket', 'Cabin'], axis=1, inplace=True)
+\end{verbatim}
+
+\subsection{Modeling}
+We will use several machine learning models, including Logistic Regression, Decision Trees, and Random Forests, to predict survival.
+
+\textbf{Model Training:}
+\begin{verbatim}
+# Split the data
+X = titanic_data.drop('Survived', axis=1)
+y = titanic_data['Survived']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Model training
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+\end{verbatim}
+
+\subsection{Evaluation}
+We evaluate the model using accuracy, precision, recall, and F1-score.
+
+\begin{verbatim}
+# Predictions
+y_pred = model.predict(X_test)
+
+# Evaluation Metrics
+print(classification_report(y_test, y_pred))
+confusion_matrix(y_test, y_pred)
+\end{verbatim}
+
+\subsection{Deployment}
+Once validated, the model can be deployed using various platforms such as Flask for a web application or as an API for integration into other systems.
+
+\section{Results}
+
+\subsection{Model Performance}
+The Random Forest model achieved an accuracy of approximately 80\%, indicating it effectively distinguishes between survivors and non-survivors.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{confusion_matrix.png}
+    \caption{Confusion Matrix}
+\end{figure}
+
+
+\subsection{Feature Importance}
+Feature importance analysis reveals that the most significant predictors of survival are:
+
+\begin{itemize}
+    \item Sex (female passengers had a higher survival rate)
+    \item Pclass (1st class passengers had a higher survival rate)
+    \item Age (younger passengers had a higher survival rate)
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{feature_importance.png}
+    \caption{Feature Importance}
+\end{figure}
+
+\section{Conclusion}
+The CRISP-DM methodology provided a structured approach to analyze the Titanic dataset and predict survival. The Random Forest model demonstrated significant accuracy, highlighting the importance of gender, class, and age in survival outcomes. Future work could explore more complex models or additional features to improve predictions.
+
+\section{References}
+
+    
+    \item Titanic Dataset - Kaggle | \href{https://www.kaggle.com/c/titanic}
+
+
+\end{document}
