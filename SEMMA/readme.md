@@ -12,4 +12,4 @@ Colob Link : https://colab.research.google.com/drive/1ZAgJ0kK4IrUsw2AJSZDp6Ww120
 
 Medium Article : https://medium.com/@bsirigupta/a-semma-based-analysis-and-modeling-of-the-iris-dataset-ee057b4a8285
 
-Youtube : https://www.youtube.com/watch?v=OZ1ymIPWLWI
+Youtube : https://youtu.be/uz1Ic0e69Ng
