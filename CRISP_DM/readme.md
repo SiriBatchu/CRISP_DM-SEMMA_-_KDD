@@ -15,4 +15,4 @@ Colab Link : https://colab.research.google.com/drive/1gcoyikBxufCUvDXZgcZDOm1heg
 
 Medium Article : https://medium.com/@bsirigupta/unveiling-titanic-survivors-a-machine-learning-perspective-with-crisp-dm-711589e842d0
 
-Youtube : https://www.youtube.com/watch?v=q_okDS2RtzY
+Youtube : https://youtu.be/UGYMRg8Rfbk
