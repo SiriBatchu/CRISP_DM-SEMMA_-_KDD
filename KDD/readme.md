@@ -14,4 +14,4 @@ Colab Link : https://colab.research.google.com/drive/1ymgj8OGEC34VJhqI6El0EEvSzk
 
 Medium Article : https://medium.com/@bsirigupta/a-knowledge-discovery-in-databases-kdd-approach-to-wine-quality-classification-93a30f3a6c21
 
-Youtube : https://www.youtube.com/watch?v=0PDq4wYZqP0
+Youtube : https://youtu.be/CRBhMqpspuE
